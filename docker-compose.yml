@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    restart: 'no'
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.dev
+
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: flask run --host=0.0.0.0
+
+    ports:
+      - 5000:5000
+    env_file:
+      - .env.dev
+    depends_on:
+      - db
+    volumes:
+      - backend:/api/backend
+volumes:
+  postgres_data:
+  backend:

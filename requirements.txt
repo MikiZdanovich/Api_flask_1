@@ -1,0 +1,8 @@
+Flask
+SQLAlchemy
+psycopg2-binary
+Flask-Script
+Flask-Restplus
+Werkzeug==0.16.1 #should be removed from requirements when the issue with Flask_restpuls imports will be fixed
+alembic
+SQLALCHEMY_Utils
